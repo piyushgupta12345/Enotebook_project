@@ -37,6 +37,27 @@ const addNote = async (req, res) => {
     }
 }
 
+const deleteNote = async (req, res) =>{
+    try {
+        const note = Notes.findByIdAndDelete(req.userId)
+        res.status(201).json(
+            {
+                success: true,
+                msg: "Note delete successfully !!",
+                note:note
+            }
+        )
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json(
+            {
+                success: false,
+                msg: "delete note process falied !!"
+            }
+        )
+    }
+}
+
 const fetchAllNotes = async (req, res) => {
     try {
         const notes = await Notes.find({ user: req.userId })
@@ -44,7 +65,7 @@ const fetchAllNotes = async (req, res) => {
             {
                 success: true,
                 msg: "Fetch all notes !!",
-                notes: notes
+                notes: notes,
             }
         )
     } catch (error) {
@@ -59,4 +80,4 @@ const fetchAllNotes = async (req, res) => {
 }
 
 
-export { fetchAllNotes, addNote };
+export { fetchAllNotes, addNote, deleteNote };
