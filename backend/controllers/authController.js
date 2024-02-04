@@ -1,7 +1,7 @@
 import User from "../models/userModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import 'dotenv/config.js'
+import 'dotenv/config.js';
 
 const register = async (req, res) => {
 
@@ -122,7 +122,8 @@ const login = async (req, res) => {
             })
 
             res.status(201).json({
-                token: token })
+                token: token
+            })
         }
 
     } catch (error) {
@@ -137,4 +138,28 @@ const login = async (req, res) => {
     }
 }
 
-export {register, login} ;
+const getUser = async (req, res) => {
+    try {
+        const userId = req.userId;
+
+        const getUser = await User.findById(userId).select("-password");
+
+        return res.status(200).json(
+            {
+                success: true,
+                msg: "getUser successfully !!",
+                user:getUser
+            }
+        )
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json(
+            {
+                success: false,
+                msg: "Not get user !!"
+            }
+        )
+    }
+}
+
+export { register, login, getUser };

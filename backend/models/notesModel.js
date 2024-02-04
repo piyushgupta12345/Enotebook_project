@@ -1,10 +1,9 @@
-import  { model, Schema } from 'mongoose';
-const { ObjectId } = mongoose.Schema.Types;
+import  mongoose ,{ model, Schema } from 'mongoose';
 
 const notesSchema = new Schema({
     user:{
-        type: ObjectId,
-        ref: 'user'
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     },
     title: {
         type: String,

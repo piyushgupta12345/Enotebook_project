@@ -2,7 +2,7 @@ import express from 'express';
 import connectToDb from './database/db.js';
 import 'dotenv/config';
 import authRoute from './routes/authRoute.js';
-// import notesRoute from './routes/notesRoute.js';
+import notesRoute from './routes/notesRoute.js';
 
 const app = express();
 
@@ -16,7 +16,7 @@ app.use(express.json())
 
 // define routes
 app.use('/api/auth', authRoute)
-// app.use('/api/notes', notesRoute)
+app.use('/api/notes', notesRoute)
 
 
 // api
