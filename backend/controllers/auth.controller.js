@@ -1,4 +1,4 @@
-import User from "../models/userModel.js";
+import User from "../models/user.model.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import 'dotenv/config.js';
@@ -118,7 +118,7 @@ const login = async (req, res) => {
             )
         } else {
             const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
-                expiresIn: '2d'
+                expiresIn: '3d'
             })
 
             res.status(201).json({

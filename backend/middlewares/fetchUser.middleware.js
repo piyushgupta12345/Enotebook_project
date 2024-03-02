@@ -19,14 +19,6 @@ const fetchUser = async (req, res, next) => {
         const {userId} = jwt.verify(token, process.env.JWT_SECRET);
         req.userId = userId
 
-        res.status(201).json(
-            {
-                success:true,
-                msg: "fetchUser successfully !!",
-                fetchuser:userId
-            }
-        )
-
         next();
 
     } catch (error) {

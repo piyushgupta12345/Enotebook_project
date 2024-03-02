@@ -1,7 +1,7 @@
-import  mongoose ,{ model, Schema } from 'mongoose';
+import mongoose, { model, Schema } from 'mongoose';
 
 const notesSchema = new Schema({
-    user:{
+    user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
@@ -16,12 +16,12 @@ const notesSchema = new Schema({
     tag: {
         type: String,
         default: "General"
-    },
-    date: {
-        type: Date,
-        default: Date.now
-    },
-}, {timestamps: true} );
+    }
+},
+    {
+        timestamps: true
+    }
+);
 
 const Notes = model('notes', notesSchema)
 export default Notes;

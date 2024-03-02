@@ -1,27 +1,27 @@
-import { model, Schema} from "mongoose";
+import { model, Schema } from "mongoose";
 
 const userSchema = new Schema({
-    name:{
+    name: {
         type: String,
         required: true,
         trim: true,
     },
-    email:{
+    email: {
         type: String,
         required: true,
         unique: true,
         trim: true,
     },
-    password:{
+    password: {
         type: String,
         required: true,
         trim: true,
     },
-    date:{
-        type: Date,
-        default: Date.now()
+},
+    {
+        timestamps: true
     }
-},{timestamps: true})
+)
 
 const User = model('user', userSchema);
 User.createIndexes();
