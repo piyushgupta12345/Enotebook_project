@@ -30,7 +30,6 @@ function Register() {
             toast.success(data.success)
             navigate('/login')
         }
-
         setName("");
         setEmail("");
         setPassword("");
